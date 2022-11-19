@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>the game</title>
+</head>
+<body >
+
+    <!-- Tto fix the white color on zoom - until 25% (width:8000px ; height:10000px ; for the img (of cours change the img it self)) -->
+
+    <img style="position: absolute;z-index:-3 ;top: 0px; left: 0px;" src="img/bg.png" alt="" id="map">
+
+
+        <div id="the_mouse_place_now" style="position:absolute"></div>
+        <div class="woods" id="woods" ></div>
+        <div class="golds" id="golds" ></div>
+    
+    
+        
+
+    <div  class="row justify-content-center nav-r mt-2" style="width: 900px ;">
+        <ul class="row container justify-content-center"  >
+            <li class="col-2 btn_sh ressurce bg-warning m-2 row justify-content-center align-items-center"><p class="row p-0 m-0 justify-content-center align-items-center " id="btn_sh">shop</p></li>
+            <li class="col-2  ressurce bg-warning m-2 row justify-content-center align-items-center"><p id="wood_result" class="row p-0 m-0 justify-content-center align-items-center"></p></li>
+            <li class="col-2  ressurce bg-warning m-2 row justify-content-center align-items-center"><p id="resultGold" class="row p-0 m-0 justify-content-center align-items-center"></p></li>
+            <li class="col-2 btn_s ressurce bg-warning m-2 row justify-content-center align-items-center"><p class="row p-0 m-0 justify-content-center align-items-center " id="btn_s">storeg</p></li>
+        </ul>
+    </div>
+    
+    
+     <div class="theplayer" id="the_player"></div>
+     <div class="mainweapon" id="main_weapon"></div>
+     <div class="monsters" id="monsters">
+     </div>
+     
+     <div class="row g-0 storeg bg-secondary p-1 justify-content-center align-items-center" id="storeg">
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        
+
+     </div>
+
+
+     <div class="row g-0 shop bg-secondary p-1 justify-content-center align-items-center" id="shop">
+        <div class="grid m-1 row g-0  justify-content-center align-items-center"> 
+            <div style="background-color:black" class="grid-item grid-item-shop" >
+                 <div class="item-info row justify-content-center align-items-center">
+                     <p class="row justify-content-center align-items-center text-center">black block</p>
+                     <p class="row justify-content-center align-items-center text-center"> you can use this item as a border to protect your self</p>
+                     <p class="row justify-content-center align-items-center text-center">max Hp 500</p>
+                     <p class="row justify-content-center align-items-center text-center">price 300 gold</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        <div class="grid m-1"></div>
+        
+
+     </div>
+
+
+
+     <div id="for_moving_the_item" ></div>
+     <div id="builded"></div>
+
+
+     <script src="js/main.js"></script>
+     <script src="js/jquery-3.6.0.min.js"></script>
+     <script src="js/bootstrap.js"></script>
+</body>
+</html>
