@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <title>the game</title>
 </head>
-<body >
+<body>
 
     <!-- Tto fix the white color on zoom - until 25% (width:8000px ; height:10000px ; for the img (of cours change the img it self)) -->
 
@@ -18,9 +18,6 @@
         <div id="the_mouse_place_now" style="position:absolute"></div>
         <div class="woods" id="woods" ></div>
         <div class="golds" id="golds" ></div>
-    
-    
-        
 
     <div  class="row justify-content-center nav-r mt-2" style="width: 900px ;">
         <ul class="row container justify-content-center"  >
@@ -31,11 +28,21 @@
         </ul>
     </div>
     
-    
-     <div class="theplayer" id="the_player"></div>
-     <div class="mainweapon" id="main_weapon"></div>
-     <div class="monsters" id="monsters">
-     </div>
+    <div class="theplayer_and_theWapon row align-items-center justify-content-center" id="theplayer_and_theWapon">
+        <div class="row col-12 g-0 justify-content-center align-items-center m-0">
+            <div class="space_top" ></div>
+        </div>
+        <div style="padding:0px ;margin:0px ; display: flex;" class=" align-items-center justify-content-center col-12 g-0 ">
+            <div class="space_left " ></div>
+            <div class="theplayer" id="the_player"></div>
+            <div class="mainweapon  " id="main_weapon"></div>
+        </div>
+        <div class="col-12 row g-0 justify-content-center align-items-center m-0">
+            <div class="space_bottom" id="main_weaponss"></div>
+        </div>
+    </div>
+
+     <div class="monsters" id="monsters"></div>
      
      <div class="row g-0 storeg bg-secondary p-1 justify-content-center align-items-center" id="storeg">
         <div class="grid m-1"></div>

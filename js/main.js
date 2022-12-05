@@ -1,77 +1,93 @@
+let theplayer_and_theWapon = document.querySelector(`#theplayer_and_theWapon`)
 let the_player = document.querySelector(`#the_player`)
 
-let a = 350
-let d = 750
+let a = 350+118
+let d = 750+112
+let speedOfPlayer = 50
 
+let detecterAutoRepeatKey = false
+setInterval(()=>{
+  if(detecterAutoRepeatKey === true ){
+    detecterAutoRepeatKey = false
+  }
+},400)
 
   function move_up() {
-    if (a <= 100) {
-      return true 
-    } else {
-      a-=50
-      the_player.style.top = `${a}px`
-     }
- 
-    if (the_player.getBoundingClientRect().y <= 100 ){
-      scrollBy(0,-50)
-    }
-    main_weapon.style.transition=`0s`
-    main_weapon.style.top = `${a-2}px`
-    main_weapon.style.left = `${d+45}px`
+    // if(detecterAutoRepeatKey === false ) {
+      if (a <= 218) {
+        return true 
+      } else {
+         a-=speedOfPlayer
+        theplayer_and_theWapon.style.top = `${a-118}px`
+       }
+   
+      if (the_player.getBoundingClientRect().y <= 218 ){
+        scrollBy(0,-speedOfPlayer)
+      }
+      // detecterAutoRepeatKey = true
+    // }
+    
+    
   }
 
 
   function move_down() {
+    // if(detecterAutoRepeatKey === false ) {
 
-    if (a >= 4700) {
+    if (a >= 4572) {
       return true 
     } else {
-      a+=50
-      the_player.style.top = `${a}px`
+      a+=speedOfPlayer
+      theplayer_and_theWapon.style.top = `${a-118}px`
     }
-    if (the_player.getBoundingClientRect().y >= 570){
-        scrollBy(0,50) 
-      
-      
-      }
-      main_weapon.style.transition=`0s`
-    main_weapon.style.top = `${a-2}px`
-    main_weapon.style.left = `${d+45}px`
+    if (the_player.getBoundingClientRect().y >= 452){
+      scrollBy(0,speedOfPlayer) 
+      // حاولت وضع ست انتيرفال ل تقيد السكرولنج و جعله ابسط ولكن قدرة المتصفح ضعيفا بالنسبة ل هذه العملية لاننا نحتاج تحريك 1 بكسل 350 مرة في نصف ثانية وهذا غير وارد كما يبدو (350 او سرغة اللاعب )
+      //اعتقد ان الافضل هو تزييف احساس السرعة عن طريق التلاعب بالخريطة  و تبطيء السرعة النهائية و مع ذلك هناك بعض الثغرات ك عدم التوافق بين السكرولنج والتحريك بشكل تام احدهم يسبق الاخر دائما 
+      // }
+    
   }
+  // detecterAutoRepeatKey = true
+}
+
 
 
   function move_right() {
-    if ( d >= 3900 ) {
+    // if(detecterAutoRepeatKey === false ) {
+
+    if ( d >= 3792 ) {
       return true
     } else { 
-      d+=50
-      the_player.style.left = `${d}px`
+      d+=speedOfPlayer
+      theplayer_and_theWapon.style.left = `${d-112}px`
     }
-    if (the_player.getBoundingClientRect().x >= 1350){
-      scrollBy(50,0)
-    }
-    main_weapon.style.transition=`0s`
-    main_weapon.style.top = `${a-2}px`
-    main_weapon.style.left = `${d+45}px`
+    if (the_player.getBoundingClientRect().x >= 1238){
+       scrollBy(speedOfPlayer,0)}
+  
+  // }
+  // detecterAutoRepeatKey = true
   }
 
 
   function move_left() {
-    if ( d <= 100) {
+    // if(detecterAutoRepeatKey === false ) {
+
+    if ( d <= 212) {
       return true
     } else { 
-      d-=50
-      the_player.style.left = `${d}px`
+      d-=speedOfPlayer
+      theplayer_and_theWapon.style.left = `${d-112}px`
     }
     
     
-     if (the_player.getBoundingClientRect().x <= 150){
-      scrollBy(-50,0)
+     if (the_player.getBoundingClientRect().x <= 252){
+      scrollBy(-speedOfPlayer,0)
     }
-    main_weapon.style.transition=`0s`
-    main_weapon.style.top = `${a-2}px`
-    main_weapon.style.left = `${d+45}px`
+   
+// }
+// detecterAutoRepeatKey = true
 }
+
 
 // function move_up_right() {
 
@@ -119,7 +135,7 @@ document.onkeydown = checkKey;
 function checkKey(e) {
 
     
-    if (e.keyCode == '87') {move_up() }
+    if (e.keyCode == '87') { move_up() }
 
     else if (e.keyCode == '83') {move_down() }
 
@@ -228,10 +244,10 @@ setInterval(
   let gold_item_left = +e.style.left.slice(0, +e.style.left.length-2)
 
 
-  if (   player_top >= gold_item_top-50 && player_top <= gold_item_top+50   ) 
+  if (   a >= gold_item_top-25 && a <= gold_item_top+25   ) 
   
   {
-    if(player_left >= gold_item_left-50 && player_left <= gold_item_left+50 ){
+    if(d >= gold_item_left-25 && d <= gold_item_left+25 ){
 
 
       if(goldColectAbility){e.remove() ; goldcounter += 100 }
@@ -317,10 +333,10 @@ setInterval(()=>{wood_in_the_map.forEach((e)=>{
   let wood_item_left = +e.style.left.slice(0, +e.style.left.length-2)
 
 
-  if (   player_top >= wood_item_top-50 && player_top <= wood_item_top+50   ) 
+  if (   a >= wood_item_top-25 && a <= wood_item_top+25   ) 
   
   {
-    if(player_left >= wood_item_left-50 && player_left <= wood_item_left+50 ){
+    if(d >= wood_item_left-25 && d <= wood_item_left+25 ){
       
       if(woodColectAbility){e.remove() ; woodCounter += 10 } 
       show_storeg_wood();
@@ -467,7 +483,7 @@ document.onclick = ()=>{
       build_item.style.height = item_to_buil.style.height
       // moving_item = false // if u but that istad of removing the item it will build another time becaus it is exist till now 
       // item_to_buil.remove() // we need to do it with right click to have the ability to multy biulde
-      goldcounter -= 30
+      goldcounter -= 300
       show_storeg_gold()
       document.oncontextmenu = (e)=> {
                e.preventDefault()
@@ -491,14 +507,14 @@ document.onclick = ()=>{
 let main_weapon = document.querySelector(`#main_weapon`)
 
 let turn = 0
-main_weapon.style.top = `${a-2}px`
-main_weapon.style.left = `${d+45}px`
+// main_weapon.style.transition=`0.2s linear`
+// main_weapon.style.top = `${a-2}px`
+// main_weapon.style.left = `${d+45}px`
 
 
-function attack() { // i can make the toutch between weapon and the monster , when i make rotate for the weapon top and left stel the same
-  // فكرة حل  انشا عنصر مختفي ك دائرة و طبق عليه مجال الضرب طبعا بعد ان تربط بين السلاح و اللاعب بكل الاحوال 
+function attack() { 
+  if(detecterAutoRepeatKey === false ) {
 
-  main_weapon.style.transition=`0.2s linear`
 
   turn+=360
   main_weapon.style.transform=`rotate(${turn}deg)`
@@ -506,32 +522,45 @@ function attack() { // i can make the toutch between weapon and the monster , wh
 
   // damaging the monsters
   let monster = document.querySelectorAll(`#monster_alive`)
+  let monster_hp = document.querySelectorAll(`.monster_hp`)
   
   for (let i = 0 ; i <= monsters_exist.length-1 ; i++ ) {
     
     // if(monster[i] != undefined) {
-      if (  parseInt(main_weapon.style.top) >= monsters_exist[i].mtop-50  && parseInt(main_weapon.style.top) <= monsters_exist[i].mtop+50   ) 
+      if (  a >= monsters_exist[i].mtop-115  && a <= monsters_exist[i].mtop+115   ) 
   
       {
-        if( parseInt(main_weapon.style.left) >= monsters_exist[i].mleft-50 &&parseInt(main_weapon.style.left)  <= monsters_exist[i].mleft+50 ){
-          if (monsters_exist[i].hp > 0){
-            monsters_exist[i].hp -= 500
-            console.log(monsters_exist[i].hp) 
-          } else if (monsters_exist[i].hp <= 0){
-            monsters_exist.splice(i,1)
+        if( d >= monsters_exist[i].mleft-115 && d  <= monsters_exist[i].mleft+115 ){
 
-            monster[i].remove()
-            console.log(monsters_exist[i].hp)
-          }
+          
+          monsters_exist[i].hp -= 100
+          monster_hp[i].value = monsters_exist[i].hp
+        }
+
+      if (monsters_exist[i].hp <= 0){
+          monsters_exist.splice(i,1)
+          monster[i].remove()
+          
         }
       }
     // }
+
   }
-
-
-
+}
+detecterAutoRepeatKey = true
 
 }
+
+// make shur that hp of monster is true
+
+setInterval(()=>{
+  let monster_hp = document.querySelectorAll(`.monster_hp`)
+    for(let i=0 ; i<= monsters_exist.length-1 ;i++){
+      if( +monster_hp[i].value != monsters_exist[i].hp )
+      monster_hp[i].value = monsters_exist[i].hp
+    }
+},1)
+
 
 // setInterval(()=>{
   
@@ -549,23 +578,17 @@ let monsters_exist = []
 
 let monsters = document.getElementById(`monsters`)
 
-let monster_in_ar = { 
-   // مبدايا المشكلة انه بحول هذا قبل ما يتم اضافته ل ال مصفوفة // الحل اضافة القيمة مباشرة لعزل الربط بين الااصلي و المضاف ل ال مصفوفة 
-  div :`<div hp="500" mood="mooving" class="monster" id="monster_creat" ></div>`,
-  hp : 500 ,
-  mood : `mooving` ,
-  mtop : 0,
-  mleft : 0,
-  status: `not exest`,
-  // بحاول هون اكو ن اكثر برمجية و احول المكان ل متغير ثم وضعه بشكل دائم على العنصر 
-  }
-  
+  // كان هناك متغير يحمل اوبجكت الوحش بداخله مع الخصائص ولكن تمت ملاحظة ان  المتغير الااصلي يتغير بتغير خصائص النسخة 
+  // ف اضطررت الى اضافته بدون متغير ك اضافة مباشرة حتى يصنع اوبجكت مختلف في كل مرة 
+  // وتختلف خصائصهم عن بعضها فيتنقل بحرية و يكون لديه خصائص حرة تماما 
+
   setInterval(()=>{
-    if ( monsters_exist.length < 10 ){
+    if ( monsters_exist.length < 6 ){
           monsters_exist.push(
-            { 
-             
-             div :`<div hp="500" mood="mooving" class="monster" id="monster_creat" ></div>`,
+            {
+            div :`<div mood="mooving" class="monster" id="monster_creat" >
+             <input type="range"  min="0" max="500" class="monster_hp"value="500" disabled></input>
+             </div>`,
              hp : 500 ,
              mood : `mooving` ,
              mtop : 0,
@@ -587,9 +610,8 @@ let monster_in_ar = {
 let monster_creat = document.querySelectorAll(`#monster_creat`)
 
     monster_creat.forEach((e,i)=>{ 
-
-      e.style.top= `${monsters_exist[i].mtop}px`
-      e.style.left= `${monsters_exist[i].mleft}px`
+      e.style.top= `${monsters_exist[i].mtop-16}px`
+      e.style.left= `${monsters_exist[i].mleft-16}px`
       setTimeout(()=>{e.id = `monster_alive`;monsters_exist[i].div =`<div hp="500" mood="mooving" class="monster" id="monster_alive" ></div>`},10)
       // console.log(monsters_exist.length,monsters.children.length)
       
@@ -619,8 +641,8 @@ setInterval(()=>{
       let eleft = monsters_exist[i].mleft
     if (monsters_exist[i].mtop > a + 200 ) { monsters_exist[i].mtop -=5} else if (monsters_exist[i].mtop < a -200 ) {monsters_exist[i].mtop +=5 }
     if (monsters_exist[i].mleft > d +200 ) {monsters_exist[i].mleft -=5} else if (monsters_exist[i].mleft < d - 200 ){monsters_exist[i].mleft +=5}
-    monster[i].style.top =`${monsters_exist[i].mtop}px`
-    monster[i].style.left=`${monsters_exist[i].mleft}px`
+    monster[i].style.top =`${monsters_exist[i].mtop-16}px`
+    monster[i].style.left=`${monsters_exist[i].mleft-16}px`
     if (monsters_exist[i].mtop <= a+200 && monsters_exist[i].mtop >= a-200 && monsters_exist[i].mleft <= d+200 && monsters_exist[i].mleft >= d-200) {
       monsters_exist[i].mood = "arrived" } else { monsters_exist[i].mood = "mooving"  }
       monster[i].setAttribute("mood",`${monsters_exist[i].mood}`)
@@ -682,8 +704,8 @@ setInterval(()=>{
         
 
         if (monsters_exist[i].mleft > d  + num3[i]  ) { monsters_exist[i].mleft -=1 } ; if (monsters_exist[i].mleft < d + num3[i]  ){  monsters_exist[i].mleft+=1 } 
-      monster[i].style.top =`${monsters_exist[i].mtop}px`
-      monster[i].style.left=`${monsters_exist[i].mleft}px` 
+      monster[i].style.top =`${monsters_exist[i].mtop-16}px`
+      monster[i].style.left=`${monsters_exist[i].mleft-16}px` 
 
       if ( monsters_exist[i].mtop === a + num2[i] && monsters_exist[i].mleft === d  + num3[i] ) {
         monsters_exist[i].mood = "attack" } else { monsters_exist[i].mood = "arrived"  }
@@ -710,12 +732,10 @@ setInterval(()=>{
     if(monster[i] != undefined) {
       if (monsters_exist[i].mood === `attack`){
         if(monsters_exist[i].attackMood === `hit`){
-          setTimeout(()=>{
             if  (monsters_exist[i].mtop > a   ) {  monsters_exist[i].mtop -=1 } else if (monsters_exist[i].mtop < a ) {  monsters_exist[i].mtop +=1 } 
             if (monsters_exist[i].mleft > d ) { monsters_exist[i].mleft -=1 } else if (monsters_exist[i].mleft < d ){  monsters_exist[i].mleft+=1 }
-            monster[i].style.top =`${monsters_exist[i].mtop}px`
-            monster[i].style.left=`${monsters_exist[i].mleft}px`
-          },1000)
+            monster[i].style.top =`${monsters_exist[i].mtop-16}px`
+            monster[i].style.left=`${monsters_exist[i].mleft-16}px`
           if (monsters_exist[i].mtop <= a+200 && monsters_exist[i].mtop >= a-200 && monsters_exist[i].mleft <= d+200 && monsters_exist[i].mleft >= d-200) {
             monsters_exist[i].mood = "attack" } else { monsters_exist[i].mood = "mooving"  }
             monster[i].setAttribute("mood",`${monsters_exist[i].mood}`)
@@ -739,12 +759,15 @@ setInterval(()=>{
     if(monster[i] != undefined) {
       if (monsters_exist[i].mood === `attack`){
         if(monsters_exist[i].attackMood === `return`){
-             if  (monsters_exist[i].mtop > a + num2[i]  ) {  monsters_exist[i].mtop -=1 } ; if (monsters_exist[i].mtop < a +num2[i]  ) {  monsters_exist[i].mtop +=1 } 
-        
+          // setTimeout(()=>{
+            if  (monsters_exist[i].mtop > a + num2[i]  ) {  monsters_exist[i].mtop -=1 } ; if (monsters_exist[i].mtop < a +num2[i]  ) {  monsters_exist[i].mtop +=1 } 
+       
 
-             if (monsters_exist[i].mleft > d  + num3[i]  ) { monsters_exist[i].mleft -=1 } ; if (monsters_exist[i].mleft < d + num3[i]  ){  monsters_exist[i].mleft+=1 } 
-               monster[i].style.top =`${monsters_exist[i].mtop}px`
-               monster[i].style.left=`${monsters_exist[i].mleft}px`
+            if (monsters_exist[i].mleft > d  + num3[i]  ) { monsters_exist[i].mleft -=1 } ; if (monsters_exist[i].mleft < d + num3[i]  ){  monsters_exist[i].mleft+=1 } 
+              monster[i].style.top =`${monsters_exist[i].mtop-16}px`
+              monster[i].style.left=`${monsters_exist[i].mleft-16}px`
+
+          // },1000)
            
             if (monsters_exist[i].mtop <= a+200 && monsters_exist[i].mtop >= a-200 && monsters_exist[i].mleft <= d+200 && monsters_exist[i].mleft >= d-200) {
             monsters_exist[i].mood = "attack" } else { monsters_exist[i].mood = "mooving"  }
@@ -759,7 +782,7 @@ setInterval(()=>{
 },30)
 
 
-
+// الاعتقاد الأبرز ان ال سيت انتيرفال ذات التشيك فولس لا تؤثر بشكل كبير على موارد الجهاز بحيث انه 3000 واحده سحبت 20% من موارد الجهاز و 300 واحده تكتب رقم 1 في كونسول كل 10 م ث استهلك 60% من الموارد 
 // ملاحظات مهمة ل القادم ل تحديد رقم المونستر و ربطه ب رقمه في ال مصفوفة سنحتاج 
 // forEach((e,i)=>{}) i for the index , e for the value (object)
 
